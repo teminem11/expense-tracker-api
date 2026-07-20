@@ -26,7 +26,7 @@ jobs:
       ECS_CONTAINER_NAME: ${{ vars.ECS_CONTAINER_NAME }}
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Validate deployment configuration
         shell: bash
