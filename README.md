@@ -2,6 +2,8 @@
 
 Portfolio-ready REST API built with Java 21, Spring Boot, PostgreSQL, JWT, Docker, Flyway and AWS S3.
 
+> **Portfolio deployment status:** the application runs locally and in Docker, while the repository includes a reviewed AWS ECS/Fargate deployment blueprint and an OIDC-based GitHub Actions workflow. No paid AWS application infrastructure is currently provisioned.
+
 ## Features
 
 - Registration and stateless JWT authentication
@@ -77,13 +79,13 @@ mvn package
 
 The tests cover JWT handling, expense ownership, update and receipt behavior, local-storage path safety, and an HTTP integration flow using an isolated H2 database.
 
-## AWS deployment notes
+## AWS deployment blueprint
 
 Set `STORAGE_PROVIDER=s3`, `AWS_REGION` and `AWS_S3_BUCKET`. Use an IAM instance/task role rather than static AWS keys. The role needs `s3:PutObject`, `s3:GetObject` and `s3:DeleteObject` only for the bucket's `receipts/*` prefix.
 
 For production, run PostgreSQL in private RDS subnets, keep the S3 bucket private, terminate HTTPS at an Application Load Balancer, store secrets in AWS Secrets Manager or SSM Parameter Store, and ship application logs to CloudWatch.
 
-The repository includes GitHub Actions for CI and an OIDC-based ECS deployment workflow. See [`docs/AWS_DEPLOYMENT.md`](docs/AWS_DEPLOYMENT.md) for the required AWS and GitHub configuration.
+The repository includes GitHub Actions for CI and a manually triggered, OIDC-based ECS deployment workflow. It is intentionally inactive until the documented AWS infrastructure and protected GitHub environment exist. See [`docs/AWS_DEPLOYMENT.md`](docs/AWS_DEPLOYMENT.md) for the architecture and security decisions.
 
 ## Stop and reset
 

@@ -1,6 +1,8 @@
-# AWS deployment
+# AWS deployment blueprint
 
-The repository deploys the API to an existing Amazon ECS/Fargate service through `.github/workflows/deploy-aws.yml`.
+This document describes a production-oriented deployment design for the portfolio project. The AWS application infrastructure is **not currently provisioned**, so the repository does not claim a live AWS deployment.
+
+The manual `.github/workflows/deploy-aws.yml` workflow is prepared to deploy the API after an ECS/Fargate service, ECR repository, private networking and runtime secrets have been configured. It uses GitHub OIDC and short-lived AWS credentials rather than stored access keys.
 
 ## Recommended topology
 
